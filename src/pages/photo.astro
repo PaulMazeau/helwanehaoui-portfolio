@@ -1,18 +1,35 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import '../styles/photo.css'
 ---
 
 <Layout title="Photographie">
-	<h1>Photo</h1>
+	<div class="grid-container">
+		<div class="photo-container">
+			<div id="image-viewer">
+				<img src="images/img1.jpg" id="current-image">
+			</div>
+		</div>
+	</div>
+	<div id="left-area"></div>
+	<div id="right-area"></div>	  
 </Layout>
 
-<style>
-	h1 {
-		font-size: 4rem;
-		font-weight: 700;
-		line-height: 1;
-		text-align: center;
-		margin-bottom: 1em;
-		color: black;
-	}
-</style>
+<script>
+	const imagesFolder = 'images/';
+	let images = ['img1.jpg', 'img2.jpg', 'img3.jpg', 'img4.jpg', 'img5.jpg', 'img6.jpg', 'img7.jpg', 'img8.jpg'];
+	let currentIndex = 0;
+
+	document.getElementById('left-area').addEventListener('click', () => {
+		currentIndex = (currentIndex - 1 + images.length) % images.length;
+		(document.getElementById('current-image') as HTMLImageElement).src = imagesFolder + images[currentIndex];
+		console.log('précédent')
+	});
+
+	document.getElementById('right-area').addEventListener('click', () => {
+		currentIndex = (currentIndex + 1) % images.length;
+		(document.getElementById('current-image') as HTMLImageElement).src = imagesFolder + images[currentIndex];
+		console.log('suivant')	
+	});
+
+</script>
