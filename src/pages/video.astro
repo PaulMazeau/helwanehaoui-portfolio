@@ -3,16 +3,31 @@ import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout title="Videos">
-	<h1>Video</h1>
+	<video id="videoBackground" autoplay loop muted>
+		<source src="/videos/BM.mov" type="video/mp4">
+		Votre navigateur ne supporte pas les vidéos HTML5.
+	</video>
+	<div id="videoControls">
+		<button id="playPause">Pause</button>
+		<button id="volume">Mute/Unmute</button>
+		<input type="range" id="speedControl" min="0.5" max="2" step="0.1" value="1">
+		<label for="speedControl">Vitesse</label>
+	</div>	
 </Layout>
 
 <style>
-	h1 {
-		font-size: 4rem;
-		font-weight: 700;
-		line-height: 1;
-		text-align: center;
-		margin-bottom: 1em;
-		color: black;
+	#videoBackground {
+		position: fixed;
+		right: 0;
+		bottom: 0;
+		min-width: 100%;
+		min-height: 100%;
+	}
+
+	#videoControls {
+		position: fixed;
+		bottom: 20px;
+		left: 20px;
+		z-index: 10;
 	}
 </style>
