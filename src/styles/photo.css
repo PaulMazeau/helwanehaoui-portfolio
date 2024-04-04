@@ -33,12 +33,14 @@
     left: 0; 
     width: 50%; 
     height: 100%;
+    cursor: url('http://localhost:4321/icons/left-icon.svg'), auto;
 }
 
 #right-area {
     position: absolute; 
     top: 0; 
-    left: 50%; 
+    right: 0; 
     width: 50%; 
     height: 100%;
+    cursor: url('http://localhost:4321/icons/right-icon.svg'), auto;
 }
