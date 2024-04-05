@@ -33,7 +33,7 @@
     left: 0; 
     width: 50%; 
     height: 100%;
-    cursor: url('https://vercel.com/pauls-projects-de6efcb9/helwanehaoui-portfolio/CwByKXPeTkHSdgdh54b4VUuR6Enj/icons/left-icon.svg'), auto;
+    cursor:e-resize
 }
 
 #right-area {
@@ -42,5 +42,5 @@
     right: 0; 
     width: 50%; 
     height: 100%;
-    cursor: url('https://vercel.com/pauls-projects-de6efcb9/helwanehaoui-portfolio/CwByKXPeTkHSdgdh54b4VUuR6Enj/icons/right-icon.svg'), auto;
+    cursor:e-resize;
 }

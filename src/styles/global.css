@@ -42,4 +42,6 @@ h1 {
     cursor: pointer;
     color: black;
     font-weight: 900;
+    position: relative;
+    z-index: 2
 }
