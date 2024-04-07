@@ -1,38 +1,45 @@
-:root {
-    --gap: 12px;
-    --columns: 12
-  }
-
 .hero-container {
     background-color: #EFB8D6;
     height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Cela sépare les éléments enfants : un au haut, un au milieu, un au bas */
 }
 
 .grid {
-    display: grid;
-    grid-template-columns: repeat(var(--columns), calc((100% - (var(--columns) - 1) * var(--gap)) / var(--columns)));
-    gap: var(--gap);
-    margin-inline: 12px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center; 
+    align-items: center; 
+    height: calc(100vh - 60px); 
+    margin: 0 auto; 
+    gap: 100%;
 }
 
-.link-photo {
-    grid-column: 2 / span 3;
+.link-photo, .link-video {
     text-align: center;
+    margin: 20px 0; 
 }
 
-.link-video {
-    grid-column: 9 / span 3;
-    text-align: center;
-}
-
-.link-photo, .link-video a {
+.link-photo a, .link-video a {
     color: white;
-    font-size: 5vw;
+    font-size:calc(40px + 3.5vw);
 }
 
 .name {
-    grid-column: 6 / span 2;
     text-align: center;
-    font-size: 1vw;
-    color: white
+    font-size:calc(16px + 1.5vw);
+    color: white;
+    margin-top: auto;
+    margin-bottom: 20px; 
 }
+
+@media (max-width: 500px) {
+    .grid {
+        gap: 60%;
+    }
+    .link-photo a, .link-video a {
+        font-size:calc(20px + 3.5vw);
+    }
+  }
+  
