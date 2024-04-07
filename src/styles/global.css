@@ -7,8 +7,8 @@
 
 html, body {
     font-family: system-ui, sans-serif;
-    overflow-x: hidden;
     cursor: crosshair;
+    overflow: hidden;
 }
 
 a {
