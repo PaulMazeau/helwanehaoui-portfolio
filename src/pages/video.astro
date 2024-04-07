@@ -11,49 +11,7 @@ import '../styles/video.css'
 		Votre navigateur ne supporte pas les vidéos HTML5.
 	</video>
 	<div id="videoControls">
-		<button id="playPause">Pause</button>
-		<button id="volume">Mute/Unmute</button>
-		<input type="range" id="speedControl" min="0.5" max="2" step="0.1" value="1">
-		<label for="speedControl">Vitesse</label>
+		<p>Suivant</p>
+		<p>Précédent</p>
 	</div>
 </Layout>
-
-<script>
-	document.addEventListener('DOMContentLoaded', function() {
-    const video = document.getElementById('videoBackground') as HTMLVideoElement; 
-    const videoSource = document.getElementById('videoSource') as HTMLVideoElement;
-    const playPauseBtn = document.getElementById('playPause') as HTMLButtonElement;
-    const volumeBtn = document.getElementById('volume') as HTMLButtonElement;
-    const speedControl = document.getElementById('speedControl') as HTMLInputElement;
-    let currentVideoIndex = 1;
-
-    playPauseBtn.addEventListener('click', function() {
-        if (video.paused) {
-            video.play();
-            playPauseBtn.textContent = 'Pause';
-        } else {
-            video.pause();
-            playPauseBtn.textContent = 'Play';
-        }
-    });
-
-    volumeBtn.addEventListener('click', function() {
-        video.muted = !video.muted;
-        volumeBtn.textContent = video.muted ? 'Unmute' : 'Mute';
-    });
-
-    speedControl.addEventListener('input', function() {
-        video.playbackRate = parseFloat(speedControl.value);
-    });
-
-    video.addEventListener('ended', function() {
-        currentVideoIndex++;
-        if (currentVideoIndex > 2) { // Si dépasse le nombre total de vidéos, réinitialise à 1
-            currentVideoIndex = 1;
-        }
-        videoSource.src = `/videos/video0${currentVideoIndex}.mp4`;
-        video.load(); 
-        video.play(); 
-    });
-});
-</script>
