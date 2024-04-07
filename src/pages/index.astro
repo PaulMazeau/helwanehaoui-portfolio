@@ -1,10 +1,22 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import '../styles/global.css'
+import '../styles/index.css'
 ---
 
 <Layout title="Helwane Haoui">
-	<h1>Helwane Haoui</h1>
-	<h1><a href="/photo">PHOTOS</a></h1>
-	<h1><a href="/video">VIDEO</a></h1>
+	<div class="hero-container">
+		<div class="grid">
+			<div class="link-photo">
+				<a href="/photo">PHOTO</a>
+			</div>
+			<div class="link-video">
+				<a href="/video">VIDEO</a>
+			</div>
+		</div>
+		<div class="grid">
+			<p class="name">Helwane Haoui</p>
+		</div>
+	</div>
 </Layout>
+

@@ -11,10 +11,6 @@ html, body {
     overflow: hidden;
 }
 
-a {
-    color: black;
-}
-
 h1 {
     font-size: 4rem;
     font-weight: 700;
@@ -22,6 +18,10 @@ h1 {
     text-align: center;
     margin-bottom: 1em;
     color: black;
+}
+
+a {
+    text-decoration: none;
 }
 
 /* NavBar */

@@ -1,0 +1,38 @@
+:root {
+    --gap: 12px;
+    --columns: 12
+  }
+
+.hero-container {
+    background-color: #EFB8D6;
+    height: 100vh;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(var(--columns), calc((100% - (var(--columns) - 1) * var(--gap)) / var(--columns)));
+    gap: var(--gap);
+    margin-inline: 12px;
+}
+
+.link-photo {
+    grid-column: 2 / span 3;
+    text-align: center;
+}
+
+.link-video {
+    grid-column: 9 / span 3;
+    text-align: center;
+}
+
+.link-photo, .link-video a {
+    color: white;
+    font-size: 5vw;
+}
+
+.name {
+    grid-column: 6 / span 2;
+    text-align: center;
+    font-size: 1vw;
+    color: white
+}
