@@ -18,3 +18,35 @@ import '../styles/index.css'
 	</div>
 </Layout>
 
+<script>
+	document.addEventListener('DOMContentLoaded', function() {
+  const colors = [
+    '#EFB8D6', '#FDE12D', '#1BCA9B', '#F76E11', '#9F44D3',
+    '#1B2430', '#00A4CC', '#F95700FF', '#2C5F2D', '#00539CFF'
+  ]; // Liste des couleurs à utiliser
+
+  const heroContainer = document.querySelector('.hero-container') as HTMLElement;
+  if (heroContainer) {
+    const randomColor = colors[Math.floor(Math.random() * colors.length)]; // Choisir une couleur aléatoirement
+    heroContainer.style.backgroundColor = randomColor; // Appliquer la couleur
+  }
+});
+
+	document.addEventListener('DOMContentLoaded', function() {
+  const links = document.querySelectorAll('.link-photo a, .link-video a');
+
+  links.forEach(link => {
+    link.addEventListener('click', function(e) {
+      e.preventDefault(); // Empêcher le lien de naviguer immédiatement
+      const href = this.getAttribute('href'); // Stocker la destination du lien
+
+      document.querySelector('.hero-container').classList.add('out'); // Ajouter la classe pour animer
+
+      setTimeout(() => {
+        window.location.href = href; // Naviguer vers la page après l'animation
+      }, 500); // Assurez-vous que ce délai correspond à la durée de l'animation CSS
+    });
+  });
+});
+
+</script>
