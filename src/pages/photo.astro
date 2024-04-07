@@ -1,71 +1,37 @@
 ---
 import Navbar from '../components/navbar.astro';
 import Layout from '../layouts/Layout.astro';
-import '../styles/photo.css';
+import '../styles/photo.css'
 ---
 
 <Layout title="Photographie">
-  <Navbar/>
-  <div class="image-container">
-  <div id="image-slider" class="image-slider">
-    <!-- Les images seront chargées par JavaScript -->
-  </div>   
-  <div style="height: 2000px;"></div>
-</div>
+	<Navbar/>
+	<div class="grid-container">
+		<div class="photo-container">
+			<div id="image-viewer">
+				<img src="images/img1.webp" id="current-image">
+			</div>
+		</div>
+	</div>
+	<div id="left-area"></div>
+	<div id="right-area"></div>	  
 </Layout>
 
 <script>
-document.addEventListener('DOMContentLoaded', function () {
-  const slider = document.getElementById('image-slider');
-  const images = ['img1.webp', 'img2.webp', 'img3.webp', 'img4.webp', 'img5.webp'];
-  let currentTick = 0;
-  let currentImageIndex = -1;
-  let scrollAccumulator = 0;  // Accumulateur pour les delta de défilement
-  const tickThreshold = 100;  // Seuil pour considérer un tick de défilement
+	const imagesFolder = 'images/';
+	let images = ['img1.webp', 'img2.webp', 'img3.webp', 'img4.webp', 'img5.webp'];
+	let currentIndex = 0;
 
-  function updateImagePosition() {
-    const img = document.querySelector('.image-slider img:last-child') as HTMLElement;
-    if (img) {
-      const percentage = 100 - (25 * (currentTick % 4));
-      img.style.transform = `translateX(-${percentage}%)`;
-    }
-  }
+	document.getElementById('left-area').addEventListener('click', () => {
+		currentIndex = (currentIndex - 1 + images.length) % images.length;
+		(document.getElementById('current-image') as HTMLImageElement).src = imagesFolder + images[currentIndex];
+		console.log('précédent')
+	});
 
-  function changeImage() {
-    if (currentImageIndex < images.length - 1) {
-      currentImageIndex++;
-    } else {
-      currentImageIndex = 0;
-    }
-
-    const newImg = document.createElement('img');
-    newImg.src = `images/${images[currentImageIndex]}`;
-    slider.appendChild(newImg);
-
-    if(currentImageIndex === 0 && currentTick === 0) {
-      newImg.style.transform = `translateX(0%)`;
-    } else {
-      updateImagePosition();
-    }
-  }
-
-  changeImage(); // Chargement initial
-
-  window.addEventListener('wheel', function(e) {
-    e.preventDefault();
-    scrollAccumulator += e.deltaY;
-    if (Math.abs(scrollAccumulator) >= tickThreshold) {
-      currentTick += (scrollAccumulator > 0 ? 1 : -1);
-      scrollAccumulator = 0;  // Réinitialisation de l'accumulateur
-      if (Math.abs(currentTick % 3) === 0) {
-        updateImagePosition();
-        if (Math.abs(currentTick / 3) % 4 === 0) {
-          changeImage();
-        }
-      }
-    }
-  }, {passive: false});
-});
-
+	document.getElementById('right-area').addEventListener('click', () => {
+		currentIndex = (currentIndex + 1) % images.length;
+		(document.getElementById('current-image') as HTMLImageElement).src = imagesFolder + images[currentIndex];
+		console.log('suivant')	
+	});
 
 </script>
