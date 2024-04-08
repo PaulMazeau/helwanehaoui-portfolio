@@ -20,18 +20,22 @@ import '../styles/photo.css'
 <script>
 	const imagesFolder = 'images/';
 	let images = ['img1.webp', 'img2.webp', 'img3.webp', 'img4.webp', 'img5.webp'];
-	let currentIndex = 0;
+
+	// Check if there is an index stored in sessionStorage
+	let currentIndex = parseInt(sessionStorage.getItem('currentIndex')) || 0;
+	document.getElementById('current-image').src = imagesFolder + images[currentIndex];
 
 	document.getElementById('left-area').addEventListener('click', () => {
 		currentIndex = (currentIndex - 1 + images.length) % images.length;
 		(document.getElementById('current-image') as HTMLImageElement).src = imagesFolder + images[currentIndex];
-		console.log('précédent')
+		sessionStorage.setItem('currentIndex', currentIndex.toString());
+		console.log('précédent');
 	});
 
 	document.getElementById('right-area').addEventListener('click', () => {
 		currentIndex = (currentIndex + 1) % images.length;
 		(document.getElementById('current-image') as HTMLImageElement).src = imagesFolder + images[currentIndex];
-		console.log('suivant')	
+		sessionStorage.setItem('currentIndex', currentIndex.toString());
+		console.log('suivant');	
 	});
-
 </script>

@@ -23,7 +23,7 @@ import '../styles/index.css'
   const colors = [
     '#EFB8D6', '#FDE12D', '#1BCA9B', '#F76E11', '#9F44D3',
     '#1B2430', '#00A4CC', '#F95700FF', '#2C5F2D', '#00539CFF'
-  ]; // Liste des couleurs à utiliser
+  ];
 
   const heroContainer = document.querySelector('.hero-container') as HTMLElement;
   if (heroContainer) {
@@ -37,14 +37,14 @@ import '../styles/index.css'
 
   links.forEach(link => {
     link.addEventListener('click', function(e) {
-      e.preventDefault(); // Empêcher le lien de naviguer immédiatement
-      const href = this.getAttribute('href'); // Stocker la destination du lien
+      e.preventDefault();
+      const href = this.getAttribute('href'); 
 
-      document.querySelector('.hero-container').classList.add('out'); // Ajouter la classe pour animer
+      document.querySelector('.hero-container').classList.add('out');
 
       setTimeout(() => {
-        window.location.href = href; // Naviguer vers la page après l'animation
-      }, 500); // Assurez-vous que ce délai correspond à la durée de l'animation CSS
+        window.location.href = href; 
+      }, 500); 
     });
   });
 });
