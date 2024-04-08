@@ -11,7 +11,50 @@ import '../styles/video.css'
 		Votre navigateur ne supporte pas les vidéos HTML5.
 	</video>
 	<div id="videoControls">
-		<p>Suivant</p>
-		<p>Précédent</p>
+		<p id="prevButton" class="video-control">Précédent</p>
+		<p id="nextButton" class="video-control">Suivant</p>
 	</div>
 </Layout>
+
+<script>
+	document.addEventListener('DOMContentLoaded', function () {
+	  const videoPlayer = document.getElementById('videoBackground');
+	  const videoSource = document.getElementById('videoSource');
+	  const prevButton = document.getElementById('prevButton');
+	  const nextButton = document.getElementById('nextButton');
+	  
+	  const videos = [
+		'/videos/video01.mp4',
+		'/videos/video02.mp4',
+		'/videos/video03.mp4',
+		'/videos/video04.mp4',
+		'/videos/video05.mp4'
+	  ];
+	  
+	  let currentVideo = 0;
+	
+	  videoPlayer.addEventListener('ended', function() {
+		// Passer à la vidéo suivante automatiquement à la fin de la vidéo
+		nextVideo();
+	  });
+	
+	  prevButton.addEventListener('click', function() {
+		currentVideo = (currentVideo - 1 + videos.length) % videos.length;
+		changeVideo();
+	  });
+	
+	  nextButton.addEventListener('click', nextVideo);
+	
+	  function nextVideo() {
+		currentVideo = (currentVideo + 1) % videos.length;
+		changeVideo();
+	  }
+	
+	  function changeVideo() {
+		videoSource.src = videos[currentVideo];
+		videoPlayer.load();
+		videoPlayer.play();
+	  }
+	});
+	</script>
+	
