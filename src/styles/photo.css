@@ -7,9 +7,10 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: calc(100vh - 40px); 
+  margin-top: -40px;
+  min-height: 100vh; 
+  background-color: black;
 }
-
 
 .photo-container {
   grid-column: 3 / span 8;
