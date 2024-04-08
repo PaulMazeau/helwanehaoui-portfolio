@@ -19,34 +19,31 @@ import '../styles/index.css'
 </Layout>
 
 <script>
-	document.addEventListener('DOMContentLoaded', function() {
-  const colors = [
-    '#EFB8D6', '#FDE12D', '#1BCA9B', '#F76E11', '#9F44D3',
-    '#1B2430', '#00A4CC', '#F95700FF', '#2C5F2D', '#00539CFF'
-  ];
+document.addEventListener('DOMContentLoaded', function() {
+  const heroContainer = document.querySelector('.hero-container');
 
-  const heroContainer = document.querySelector('.hero-container') as HTMLElement;
-  if (heroContainer) {
-    const randomColor = colors[Math.floor(Math.random() * colors.length)]; // Choisir une couleur aléatoirement
-    heroContainer.style.backgroundColor = randomColor; // Appliquer la couleur
-  }
-});
+  if (!sessionStorage.getItem('isAnimated')) {
+    const colors = [
+      '#EFB8D6', '#FDE12D', '#1BCA9B', '#F76E11', '#9F44D3',
+      '#1B2430', '#00A4CC', '#F95700FF', '#2C5F2D', '#00539CFF'
+    ];
 
-	document.addEventListener('DOMContentLoaded', function() {
-  const links = document.querySelectorAll('.link-photo a, .link-video a');
+    const randomColor = colors[Math.floor(Math.random() * colors.length)];
+    heroContainer.style.backgroundColor = randomColor;
 
-  links.forEach(link => {
-    link.addEventListener('click', function(e) {
-      e.preventDefault();
-      const href = this.getAttribute('href'); 
+    const links = document.querySelectorAll('.link-photo a, .link-video a');
+    links.forEach(link => {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        heroContainer.classList.add('out');
+        sessionStorage.setItem('isAnimated', true); // Marquer l'animation comme jouée
 
-      document.querySelector('.hero-container').classList.add('out');
-
-      setTimeout(() => {
-        window.location.href = href; 
-      }, 500); 
+        setTimeout(() => {
+          window.location.href = this.getAttribute('href');
+        }, 500); // Délai avant la redirection
+      });
     });
-  });
+  }
 });
 
 </script>
