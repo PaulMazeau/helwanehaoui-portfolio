@@ -24,6 +24,7 @@
 .link-photo a, .link-video a {
     color: white;
     font-size:calc(40px + 3.5vw);
+    font-family: 'BanglaMN_Bold', sans-serif;
 }
 
 .name {
