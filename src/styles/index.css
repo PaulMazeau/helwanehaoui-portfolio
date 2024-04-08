@@ -9,11 +9,11 @@
 .grid {
     display: flex;
     flex-direction: row;
-    justify-content: center; 
+    justify-content: space-between; 
     align-items: center; 
     height: calc(100vh - 60px); 
     margin: 0 auto; 
-    gap: 100%;
+    width: 70vw;
 }
 
 .link-photo, .link-video {
@@ -35,9 +35,6 @@
 }
 
 @media (max-width: 500px) {
-    .grid {
-        gap: 60%;
-    }
     .link-photo a, .link-video a {
         font-size:calc(20px + 3.5vw);
     }
