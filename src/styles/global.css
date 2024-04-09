@@ -49,9 +49,9 @@ a {
     align-items: center;
     width: 100%;
     padding: 8px 8px;
-    background-color: transparent;
     position: relative;
     z-index: 10;
+    background-color: black;
 }
 
 .logo, .links {
