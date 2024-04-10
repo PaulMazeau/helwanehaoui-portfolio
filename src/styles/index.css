@@ -13,7 +13,8 @@
     align-items: center; 
     height: calc(100vh - 60px); 
     margin: 0 auto; 
-    width: 70vw;
+    width: 80vw;
+    gap: 10vw;
 }
 
 .link-photo, .link-video {
@@ -53,5 +54,5 @@
   }
   
   .hero-container.out {
-    animation: slideOutUp 0.5s forwards; /* Remplace 0.5s par la durée souhaitée de l'animation */
+    animation: slideOutUp 0.5s forwards;
   }
