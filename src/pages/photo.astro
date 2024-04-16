@@ -1,16 +1,47 @@
 ---
 import Navbar from '../components/navbar.astro';
 import Layout from '../layouts/Layout.astro';
-import '../styles/photo.css'
+import '../styles/photo.css';
 ---
 
 <Layout title="Photographie">
-	<Navbar/>
-	<div class="page-container">
-		<img src="/icons/left-icon.svg" alt="Icone 1" class="icon" />
-		<div class="image-container">
-		  <img src="./images/img2.webp" class="image" />
-		</div>
-		<img src="/icons/right-icon.svg" alt="Icone 2" class="icon" />
-	</div>
+    <Navbar/>
+    <div class="page-container">
+        <img id="left-icon" src="/icons/left-icon.svg" alt="Précédent" class="icon" />
+        <div class="image-container">
+          <img id="main-image" src="./images/img1.webp" class="image" />
+        </div>
+        <img id="right-icon" src="/icons/right-icon.svg" alt="Suivant" class="icon" />
+    </div>
 </Layout>
+
+<script>
+const images = ["./images/img1.webp", "./images/img2.webp", "./images/img3.webp"];
+let currentIndex = 0;
+
+const mainImage = document.getElementById('main-image') as HTMLImageElement;
+const leftIcon = document.getElementById('left-icon');
+const rightIcon = document.getElementById('right-icon');
+
+function updateImageAndIcons() {
+    mainImage.src = images[currentIndex];
+    leftIcon.style.display = currentIndex === 0 ? 'none' : 'block';
+    rightIcon.style.display = currentIndex === images.length - 1 ? 'none' : 'block';
+}
+
+leftIcon.addEventListener('click', () => {
+    if (currentIndex > 0) {
+        currentIndex--;
+        updateImageAndIcons();
+    }
+});
+
+rightIcon.addEventListener('click', () => {
+    if (currentIndex < images.length - 1) {
+        currentIndex++;
+        updateImageAndIcons();
+    }
+});
+
+updateImageAndIcons();
+</script>
