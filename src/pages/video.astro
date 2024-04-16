@@ -7,14 +7,14 @@ import '../styles/video.css';
 <Layout title="Videos">
     <Navbar/>
     <div class="video-page">
-        <video id="videoBackground" autoplay>
+        <video id="videoBackground" autoplay muted loop>
             <source id="videoSource" src="/videos/video01.mp4" type="video/mp4">
             Votre navigateur ne supporte pas les vidéos HTML5.
         </video>
         <div id="videoControls">
             <img id="left-icon" src="/icons/left-icon.svg" alt="Précédent" class="icon" />
-            <img id="pause-icon" src="/icons/pause-icon.svg" alt="Pause" class="icon" style="display: none;" />
-            <img id="play-icon" src="/icons/play-icon.svg" alt="Lecture" class="icon" />
+            <img id="pause-icon" src="/icons/pause-icon.svg" alt="Pause" class="icon" />
+            <img id="play-icon" src="/icons/play-icon.svg" alt="Lecture" class="icon" style="display: none;" />
             <img id="right-icon" src="/icons/right-icon.svg" alt="Suivant" class="icon" />
         </div>
     </div>
@@ -34,8 +34,9 @@ const rightIcon = document.getElementById('right-icon');
 function updateVideoAndIcons() {
     videoSource.src = videos[currentVideoIndex];
     video.load();
-    pauseIcon.style.display = 'none';
-    playIcon.style.display = 'block';
+    video.play(); // Assurez-vous que la vidéo se lance automatiquement après le changement de source
+    playIcon.style.display = 'none';
+    pauseIcon.style.display = 'block';
 }
 
 leftIcon.addEventListener('click', () => {
