@@ -28,7 +28,8 @@
     font-family: 'BanglaMN_Bold', sans-serif;
 }
 
-.name {
+.a-propos {
+    cursor: pointer;
     text-align: center;
     font-size:calc(16px + .5vw);
     color: black;
