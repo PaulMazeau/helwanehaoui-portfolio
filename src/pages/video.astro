@@ -1,18 +1,72 @@
 ---
 import Navbar from '../components/navbar.astro';
 import Layout from '../layouts/Layout.astro';
-import '../styles/video.css'
+import '../styles/video.css';
 ---
 
 <Layout title="Videos">
-	<Navbar/>
-	<div class="video-page">
-		<video id="videoBackground" autoplay>
-			<source id="videoSource" src="/videos/video01.mp4" type="video/mp4">
-			Votre navigateur ne supporte pas les vidéos HTML5.
-		</video>
-		<div id="videoControls">
-		</div>
-	</div>
+    <Navbar/>
+    <div class="video-page">
+        <video id="videoBackground" autoplay>
+            <source id="videoSource" src="/videos/video01.mp4" type="video/mp4">
+            Votre navigateur ne supporte pas les vidéos HTML5.
+        </video>
+        <div id="videoControls">
+            <img id="left-icon" src="/icons/left-icon.svg" alt="Précédent" class="icon" />
+            <img id="pause-icon" src="/icons/pause-icon.svg" alt="Pause" class="icon" style="display: none;" />
+            <img id="play-icon" src="/icons/play-icon.svg" alt="Lecture" class="icon" />
+            <img id="right-icon" src="/icons/right-icon.svg" alt="Suivant" class="icon" />
+        </div>
+    </div>
 </Layout>
-	
+
+<script>
+const videos = ["/videos/video01.mp4", "/videos/video02.mp4", "/videos/video03.mp4"];
+let currentVideoIndex = 0;
+
+const video = document.getElementById('videoBackground') as HTMLVideoElement;
+const videoSource = document.getElementById('videoSource') as HTMLSourceElement;
+const leftIcon = document.getElementById('left-icon');
+const pauseIcon = document.getElementById('pause-icon');
+const playIcon = document.getElementById('play-icon');
+const rightIcon = document.getElementById('right-icon');
+
+function updateVideoAndIcons() {
+    videoSource.src = videos[currentVideoIndex];
+    video.load();
+    pauseIcon.style.display = 'none';
+    playIcon.style.display = 'block';
+}
+
+leftIcon.addEventListener('click', () => {
+    if (currentVideoIndex > 0) {
+        currentVideoIndex--;
+    } else {
+        currentVideoIndex = videos.length - 1;
+    }
+    updateVideoAndIcons();
+});
+
+rightIcon.addEventListener('click', () => {
+    if (currentVideoIndex < videos.length - 1) {
+        currentVideoIndex++;
+    } else {
+        currentVideoIndex = 0;
+    }
+    updateVideoAndIcons();
+});
+
+pauseIcon.addEventListener('click', () => {
+    video.pause();
+    pauseIcon.style.display = 'none';
+    playIcon.style.display = 'block';
+});
+
+playIcon.addEventListener('click', () => {
+    video.play();
+    playIcon.style.display = 'none';
+    pauseIcon.style.display = 'block';
+});
+
+updateVideoAndIcons();
+</script>
