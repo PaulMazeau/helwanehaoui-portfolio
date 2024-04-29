@@ -20,32 +20,82 @@ import '../styles/photo.css';
 </Layout>
 
 <script>
-const images = ["./images/img1.webp", "./images/img2.webp", "./images/img3.webp"];
-let currentIndex = 0;
+    const images = ["./images/img1.webp", "./images/img2.webp", "./images/img3.webp"];
+    let currentIndex = 0;
+    let isZoomed = false; // État du zoom, false indique que l'image est au niveau de zoom normal
+    
+    const mainImage = document.getElementById('main-image') as HTMLImageElement;
+    const leftIcon = document.getElementById('left-icon');
+    const rightIcon = document.getElementById('right-icon');
+    const zoomIcon = document.createElement('img');
+    
+    zoomIcon.src = '/icons/zoom-in-icon.svg'; // Assurez-vous d'avoir cette icône
+    zoomIcon.className = 'icon';
+    document.querySelector('.image-container').appendChild(zoomIcon);
+    
+    function updateImageAndIcons() {
+        mainImage.src = images[currentIndex];
+        leftIcon.style.display = currentIndex === 0 ? 'none' : 'block';
+        rightIcon.style.display = currentIndex === images.length - 1 ? 'none' : 'block';
+        zoomIcon.src = isZoomed ? '/icons/zoom-out-icon.svg' : '/icons/zoom-in-icon.svg';
+    }
+    
+    document.addEventListener('DOMContentLoaded', (event) => {
+    mainImage.addEventListener('contextmenu', function(event) {
+        event.preventDefault();
+    });
+    });
 
-const mainImage = document.getElementById('main-image') as HTMLImageElement;
-const leftIcon = document.getElementById('left-icon');
-const rightIcon = document.getElementById('right-icon');
+// Ajoutez ces variables globales pour mémoriser la position du dernier zoom
+let lastZoomX = 0;
+let lastZoomY = 0;
 
-function updateImageAndIcons() {
-    mainImage.src = images[currentIndex];
-    leftIcon.style.display = currentIndex === 0 ? 'none' : 'block';
-    rightIcon.style.display = currentIndex === images.length - 1 ? 'none' : 'block';
+mainImage.addEventListener('mousedown', (event) => {
+    event.preventDefault();
+    // Obtenez les coordonnées seulement si vous allez zoomer
+    if (!isZoomed) {
+        const bounds = mainImage.getBoundingClientRect();
+        lastZoomX = event.clientX - bounds.left;
+        lastZoomY = event.clientY - bounds.top;
+    }
+    toggleZoom();
+});
+
+function toggleZoom() {
+    const transformOriginValue = `${lastZoomX}px ${lastZoomY}px`;
+    if (isZoomed) {
+        // Utilisez la dernière position de transform-origin pour le dézoom
+        mainImage.style.transformOrigin = transformOriginValue;
+        mainImage.style.transform = 'scale(1)';
+        isZoomed = false;
+    } else {
+        // Utilisez la nouvelle position de transform-origin pour le zoom
+        mainImage.style.transformOrigin = transformOriginValue;
+        mainImage.style.transform = 'scale(2)'; // Ajustez selon le niveau de zoom souhaité
+        isZoomed = true;
+    }
+    mainImage.classList.toggle('image-zoomed', isZoomed);
+    updateImageAndIcons();
 }
 
-leftIcon.addEventListener('click', () => {
-    if (currentIndex > 0) {
-        currentIndex--;
-        updateImageAndIcons();
-    }
-});
 
-rightIcon.addEventListener('click', () => {
-    if (currentIndex < images.length - 1) {
-        currentIndex++;
-        updateImageAndIcons();
-    }
-});
 
-updateImageAndIcons();
-</script>
+    
+    leftIcon.addEventListener('click', () => {
+        if (currentIndex > 0) {
+            currentIndex--;
+            updateImageAndIcons();
+        }
+    });
+    
+    rightIcon.addEventListener('click', () => {
+        if (currentIndex < images.length - 1) {
+            currentIndex++;
+            updateImageAndIcons();
+        }
+    });
+    
+    updateImageAndIcons();
+    </script>
+    
+    
