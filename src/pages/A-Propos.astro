@@ -1,11 +1,13 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/navbar.astro';
 import '../styles/a-propos.css';
 ---
 
 <Layout title="A propos">
+	<Navbar/>
 	<div class="a-propos-container">
-		<p class="a-propos-text">
+		<p class="presentation">
 			Mon objectif principal est de créer l'excellence en matière de narration, à adopter l'innovation et à combiner les approches traditionnelles et modernes.
 			Je me suis engagé dans une trajectoire alimentée par une profonde curiosité.
 			<br/>
@@ -16,10 +18,18 @@ import '../styles/a-propos.css';
 			Je navigue dans les domaines de la photographie, de la direction artistique et de la psychologie du consommateur.
 			Ses intérêts éclectiques couvrent les arts, le design et la culture du monde.
 		</p>
-		<img src="/icons/divider.svg" alt="">
-		<p class="a-propos-text">2024 HELWANE HAOUI</p>
-		<p class="a-propos-text">Tout le contenu est protégé par le droit d'auteur de l'artiste. Aucune utilisation commerciale sans autorisation écrite expressément.</p>
-		<p class="a-propos-text">contact@helwanehaoui.com</p>
+		<div class="divider">
+			<img src="/icons/divider.svg" alt="">
+		</div>
+		<div class="footer">
+			<div>
+				<p>2024 HELWANE HAOUI</p>
+				<p class="copywrite">Tout le contenu est protégé par le droit d'auteur de l'artiste. Aucune utilisation commerciale sans autorisation écrite expressément.</p>
+			</div>
+			<div>
+				<p>contact@helwanehaoui.com</p>
+			</div>
+		</div>
 	</div>
 </Layout>
 
