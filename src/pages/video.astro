@@ -7,9 +7,9 @@ import '../styles/video.css';
 <Layout title="Videos">
     <Navbar/>
     <div class="video-page">
-        <video id="videoBackground" autoplay muted loop>
+        <video id="videoBackground" autoplay loop playsinline>
             <source id="videoSource" src="/videos/video01.mp4" type="video/mp4">
-            Votre navigateur ne supporte pas les vidéos HTML5.
+            Votre navigateur ne supporte pas les vidéos.
         </video>
         <div id="videoControls">
             <img id="left-icon" src="/icons/left-icon.svg" alt="Précédent" class="icon" />
@@ -21,7 +21,7 @@ import '../styles/video.css';
 </Layout>
 
 <script>
-const videos = ["/videos/video01.mp4", "/videos/video02.mp4", "/videos/video03.mp4"];
+const videos = ["/videos/video01.mp4", "/videos/video02.mp4", "/videos/video03.mp4", "/videos/video04.mp4", "/videos/video05.mp4", "/videos/video06.mp4"];
 let currentVideoIndex = 0;
 
 const video = document.getElementById('videoBackground') as HTMLVideoElement;
@@ -34,7 +34,9 @@ const rightIcon = document.getElementById('right-icon');
 function updateVideoAndIcons() {
     videoSource.src = videos[currentVideoIndex];
     video.load();
-    video.play(); // Assurez-vous que la vidéo se lance automatiquement après le changement de source
+    video.addEventListener('loadeddata', () => {
+    video.play();
+    });
     playIcon.style.display = 'none';
     pauseIcon.style.display = 'block';
 }
