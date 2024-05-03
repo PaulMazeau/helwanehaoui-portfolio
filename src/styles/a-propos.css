@@ -52,4 +52,12 @@
         .presentation {
             font-size: 0.8rem; /* Réduction supplémentaire de la taille de la police */
         }
+        .footer {
+            display: flex;
+            flex-direction: column-reverse;
+            justify-content: left;
+            align-items: left; /* Centrer horizontalement les éléments */
+            margin-top: auto; /* Pour placer le footer en bas de la page */
+            padding: 20px 0; /* Ajout de padding pour un meilleur espacement */
+        }
     }
