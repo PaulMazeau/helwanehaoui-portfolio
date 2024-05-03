@@ -42,7 +42,6 @@
             flex-direction: column-reverse;
             justify-content: left;
             align-items: left; /* Centrer horizontalement les éléments */
-            margin-top: auto; /* Pour placer le footer en bas de la page */
             padding: 20px 0; /* Ajout de padding pour un meilleur espacement */
         }
     }
@@ -57,7 +56,6 @@
             flex-direction: column-reverse;
             justify-content: left;
             align-items: left; /* Centrer horizontalement les éléments */
-            margin-top: auto; /* Pour placer le footer en bas de la page */
             padding: 20px 0; /* Ajout de padding pour un meilleur espacement */
         }
     }
