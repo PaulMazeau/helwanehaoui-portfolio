@@ -14,7 +14,7 @@
         padding: 0 20px;
     }
     .copywrite {
-        font-size: 0.8rem; /* Réduction de la taille de la police */
+        font-size: 0.8rem;
     }
     .divider {
         display: flex;
@@ -25,8 +25,8 @@
         display: flex;
         flex-direction: row;
         justify-content: space-between;
-        width: 95%;
-        margin-inline: 2.5%;
+        width: 100%;
+        padding-inline: 20px;
         margin-bottom: 12px;
     }
 
@@ -38,14 +38,19 @@
             display: flex;
             flex-direction: column-reverse;
             justify-content: space-between;
-            width: 95%;
-            margin-inline: 2.5%;
+            width: 100%;
+            padding: 0 20px;
+            margin-inline: 0;
             margin-bottom: 12px;
+            font-size: 0.9rem; 
         }
     }
 
     @media only screen and (max-width: 480px) {
         .presentation {
             font-size: 0.8rem; 
+        }
+        .footer {
+            font-size: 0.9rem; 
         }
     }
