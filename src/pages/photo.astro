@@ -28,16 +28,12 @@ import '../styles/photo.css';
     const leftIcon = document.getElementById('left-icon');
     const rightIcon = document.getElementById('right-icon');
     const zoomIcon = document.createElement('img');
-    
-    zoomIcon.src = '/icons/zoom-in-icon.svg'; // Assurez-vous d'avoir cette icône
-    zoomIcon.className = 'icon';
-    document.querySelector('.image-container').appendChild(zoomIcon);
+
     
     function updateImageAndIcons() {
         mainImage.src = images[currentIndex];
         leftIcon.style.display = currentIndex === 0 ? 'none' : 'block';
         rightIcon.style.display = currentIndex === images.length - 1 ? 'none' : 'block';
-        zoomIcon.src = isZoomed ? '/icons/zoom-out-icon.svg' : '/icons/zoom-in-icon.svg';
     }
     
     document.addEventListener('DOMContentLoaded', (event) => {
