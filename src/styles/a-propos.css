@@ -32,30 +32,14 @@
         margin-bottom: 12px;
     }
 
-    /* Media queries pour les écrans plus petits */
     @media only screen and (max-width: 768px) {
         .presentation {
-            font-size: 0.9rem; /* Réduction de la taille de la police */
-        }
-        .footer {
-            display: flex;
-            flex-direction: column-reverse;
-            justify-content: left;
-            align-items: left; /* Centrer horizontalement les éléments */
-            padding: 20px 0; /* Ajout de padding pour un meilleur espacement */
+            font-size: 0.9rem; 
         }
     }
 
-    /* Media queries pour les écrans encore plus petits */
     @media only screen and (max-width: 480px) {
         .presentation {
-            font-size: 0.8rem; /* Réduction supplémentaire de la taille de la police */
-        }
-        .footer {
-            display: flex;
-            flex-direction: column-reverse;
-            justify-content: left;
-            align-items: left; /* Centrer horizontalement les éléments */
-            padding: 20px 0; /* Ajout de padding pour un meilleur espacement */
+            font-size: 0.8rem; 
         }
     }
