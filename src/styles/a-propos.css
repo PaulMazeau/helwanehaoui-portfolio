@@ -14,7 +14,9 @@
         padding: 0 20px;
     }
     .copywrite {
-        font-size: 0.8rem;
+        font-size: 1rem;
+        text-align: center;
+        padding-inline: 20px;
     }
     .divider {
         display: flex;
